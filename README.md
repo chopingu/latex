@@ -1,1 +1,5 @@
 # latex
+
+```
+latex-setup
+```
