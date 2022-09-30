@@ -1,0 +1,78 @@
+\ProvidesPackage{Classic} 
+
+% day roman
+\renewcommand{\rmdefault}{dayrom} 
+\usepackage{mathfont}
+\linespread{1.15}\selectfont
+
+% import signs from day roman to math mode
+\DeclareSymbolFont{textoperators}   {\encodingdefault}{\rmdefault}{\mddefault}{n}
+\SetSymbolFont{textoperators}{normal}{\encodingdefault}{\rmdefault}{\mddefault}{n}
+\SetSymbolFont{textoperators}{bold}{\encodingdefault}{\rmdefault}{\bfdefault}{n}
+%\DeclareMathSymbol{0}{\mathalpha}{textoperators}{`0}
+%\DeclareMathSymbol{1}{\mathalpha}{textoperators}{`1}
+%\DeclareMathSymbol{2}{\mathalpha}{textoperators}{`2}
+%\DeclareMathSymbol{3}{\mathalpha}{textoperators}{`3}
+%\DeclareMathSymbol{4}{\mathalpha}{textoperators}{`4}
+%\DeclareMathSymbol{5}{\mathalpha}{textoperators}{`5}
+%\DeclareMathSymbol{6}{\mathalpha}{textoperators}{`6}
+%\DeclareMathSymbol{7}{\mathalpha}{textoperators}{`7}
+%\DeclareMathSymbol{8}{\mathalpha}{textoperators}{`8}
+%\DeclareMathSymbol{9}{\mathalpha}{textoperators}{`9}
+\DeclareMathSymbol{*}{\mathbin}{textoperators}{`*} % \ast
+\DeclareMathSymbol{.}{\mathord}{textoperators}{`.}
+\DeclareMathSymbol{:}{\mathrel}{textoperators}{`:}
+\DeclareMathSymbol{;}{\mathpunct}{textoperators}{`;}
+\DeclareMathSymbol{,}{\mathpunct}{textoperators}{`,} % Clashes with french option.
+\DeclareMathSymbol{!}{\mathclose}{textoperators}{`!}
+\DeclareMathSymbol{?}{\mathclose}{textoperators}{`?}
+\renewcommand{\%}{\textrm{\char`\%}}
+
+%\DeclareMathSymbol{+}{\mathbin}{textoperators}{`+}
+%\DeclareMathSymbol{-}{\mathbin}{textoperators}{`-}
+%\DeclareMathSymbol{=}{\mathrel}{textoperators}{`=}
+%\DeclareMathDelimiter{(}{\mathopen} {textoperators}{"28}{largesymbols}{"00}
+%\DeclareMathDelimiter{)}{\mathclose}{textoperators}{"29}{largesymbols}{"01}
+%\DeclareMathDelimiter{[}{\mathopen} {textoperators}{"5B}{largesymbols}{"02}
+%\DeclareMathDelimiter{]}{\mathclose}{textoperators}{"5D}{largesymbols}{"03}
+% + - = will yield a thin appearance to other mathematical symbols, which are forced 
+% to be taken from CM, for example x
+                        
+
+% greek letters
+%\usepackage[Symbolsmallscale]{upgreek}
+\usepackage[Symbol]{upgreek}
+\renewcommand{\alpha}{\upalpha}
+\renewcommand{\beta}{\upbeta}
+\renewcommand{\gamma}{\upgamma}
+\renewcommand{\delta}{\updelta}
+\renewcommand{\epsilon}{\upvarepsilon}
+\renewcommand{\zeta}{\upzeta}
+\renewcommand{\eta}{\upeta}
+\renewcommand{\theta}{\uptheta}
+\renewcommand{\iota}{\upiota}
+\renewcommand{\kappa}{\upkappa}
+\renewcommand{\lambda}{\uplambda}
+\renewcommand{\mu}{\upmu}
+\renewcommand{\nu}{\upnu}
+\renewcommand{\xi}{\upxi}
+\renewcommand{\pi}{\uppi}
+\renewcommand{\rho}{\uprho}
+\renewcommand{\sigma}{\upsigma}
+\renewcommand{\tau}{\uptau}
+\renewcommand{\upsilon}{\upupsilon}
+\renewcommand{\phi}{\upvarphi}
+\renewcommand{\chi}{\upchi}
+\renewcommand{\psi}{\uppsi}
+\renewcommand{\omega}{\upomega}
+\renewcommand{\Gamma}{\Upgamma}
+\renewcommand{\Delta}{\Updelta}
+\renewcommand{\Theta}{\Uptheta}
+\renewcommand{\Lambda}{\Uplambda}
+\renewcommand{\Xi}{\Upxi}
+\renewcommand{\Pi}{\Uppi}
+\renewcommand{\Sigma}{\Upsigma}
+\renewcommand{\Upsilon}{\Upupsilon}
+\renewcommand{\Phi}{\Upphi}
+\renewcommand{\Psi}{\Uppsi}
+\renewcommand{\Omega}{\Upomega}

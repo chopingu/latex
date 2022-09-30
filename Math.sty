@@ -1,0 +1,165 @@
+\ProvidesPackage{Math}
+% NOTE: When importing the braket part below into a tex-file, the commands MUST be enclosed within \makeatletter ... \makeatother. 
+
+% packages
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mathabx} % braket package needed in order for \gen below to work. 
+
+% miscellaneous
+
+\allowdisplaybreaks 
+
+% equations
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+%\newcommand{\bca}{\begin{cases}}
+%\newcommand{\eca}{\end{cases}}
+\newcommand{\eref}[1]{(\ref{#1})}
+
+% commons symbols
+%\newcommand{\build}{\ | \ }
+\newcommand{\restr}[2][\big]{#1\arrowvert_{#2}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\Abs}[1]{\left\lvert#1\right\rvert}
+
+% logic
+\newcommand{\ekv}{\ \Leftrightarrow \ }
+\newcommand{\ek}{\ \leftrightarrow \ }
+\newcommand{\imp}{\ \Rightarrow \ }
+\newcommand{\im}{\ \rightarrow \ }
+\newcommand{\och}{\ \wedge \ }
+\newcommand{\eller}{\ \vee \ }
+
+% sets
+\renewcommand{\emptyset}{\textrm{\fontfamily{ugm}\upshape\mdseries\selectfont\O}}
+\newcommand{\Z}{\mathbf{Z}}
+%\newcommand{\ZZ}{\mathbf{Z}^+}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+
+% elemntary functions
+\renewcommand{\sin}{\mathop\mathrm{sin}\nolimits}
+\renewcommand{\cos}{\mathop\mathrm{cos}\nolimits}
+\renewcommand{\tan}{\mathop\mathrm{tan}\nolimits}
+\renewcommand{\cot}{\mathop\mathrm{cot}\nolimits}
+\renewcommand{\arcsin}{\mathop\mathrm{arcsin}\nolimits}
+\renewcommand{\arccos}{\mathop\mathrm{arccos}\nolimits}
+\renewcommand{\arctan}{\mathop\mathrm{arctan}\nolimits}
+\renewcommand{\arctan}{\mathop\mathrm{arccot}\nolimits}
+\renewcommand{\ln}{\mathop\mathrm{ln}\nolimits}
+\renewcommand{\lg}{\mathop\mathrm{lg}\nolimits}
+\renewcommand{\log}{\mathop\mathrm{log}\nolimits}
+\renewcommand{\exp}{\mathop\mathrm{exp}\nolimits}
+
+% calculus
+\renewcommand{\inf}{\mathop\mathrm{inf}}
+\renewcommand{\sup}{\mathop\mathrm{sup}}
+\renewcommand{\lim}{\mathop\mathrm{lim}}
+\renewcommand{\liminf}{\mathop\mathrm{lim\, inf}}
+\renewcommand{\limsup}{\mathop\mathrm{lim\, sup}}
+\renewcommand{\max}{\mathop\mathrm{max}}			
+\renewcommand{\min}{\mathop\mathrm{min}}
+
+% algebra
+\renewcommand{\mod}{\mathop\mathrm{mod}\nolimits}
+\renewcommand{\pmod}[1]{\ (\mathop\mathrm{mod}\nolimits #1)}
+\renewcommand{\deg}{\mathop\mathrm{deg}\nolimits}
+\DeclareMathOperator{\tr}{\mathrm{tr}} 			
+\DeclareMathOperator{\ad}{\mathrm{ad}}
+\renewcommand{\dim}{\mathop\mathrm{dim}\nolimits}
+\renewcommand{\det}{\mathop\mathrm{det}\nolimits}
+
+% number-theory
+\DeclareMathOperator{\GCD}{\textsc{gcd}}
+\DeclareMathOperator{\LCM}{\textsc{lcm}}
+
+% abstract algebra
+\DeclareMathOperator{\Ker}{\mathrm{Ker}}			
+\DeclareMathOperator{\Coker}{\mathrm{Coker}}
+\renewcommand{\Im}{\mathop\mathrm{Im}\nolimits}	
+\DeclareMathOperator{\Coim}{\mathrm{Coim}}
+\DeclareMathOperator{\Hom}{\mathrm{Hom}} 			
+\DeclareMathOperator{\End}{\mathrm{End}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\DeclareMathOperator{\Frac}{\mathrm{Frac}}
+\DeclareMathOperator{\Rad}{\mathrm{Rad}}
+
+% category theory
+\DeclareMathOperator{\Fun}{\mathrm{Fun}}			
+\DeclareMathOperator{\Nat}{\mathrm{Nat}} 
+\def\indlim{\mathop{\oalign{\hfil$\rm lim$\hfil\cr$\longrightarrow$\cr}}}
+\def\prolim{\mathop{\oalign{\hfil$\rm lim$\hfil\cr$\longleftarrow$\cr}}}
+
+
+% homological algebra
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}			
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+
+% brackets
+\let\protect\relax
+
+% define \gen and \Gen
+{\catcode`\|=\active
+  \xdef\gen{\protect\expandafter\noexpand\csname gen \endcsname}
+  \expandafter\gdef\csname gen \endcsname#1{\mathinner
+        {\langle\,{\mathcode`\|32768\let|\midvert #1}\,\rangle}}
+  \xdef\Gen{\protect\expandafter\noexpand\csname Gen \endcsname}
+  \expandafter\gdef\csname Gen \endcsname#1{\left\langle%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     \:{\let\|\GenDoubleVert
+     \mathcode`\|32768\let|\GenVert
+     #1}\:\right\rangle}
+}
+\def\midvert{\egroup\mid\bgroup}
+\def\GenVert{\@ifnextchar|{\|\@gobble}% turn || into \|
+    {\egroup\;\mid@vertical\;\bgroup}}
+\def\GenDoubleVert{\egroup\;\mid@dblvertical\;\bgroup}
+
+% define \set and \Set
+{\catcode`\|=\active
+  \xdef\set{\protect\expandafter\noexpand\csname set \endcsname}
+  \expandafter\gdef\csname set \endcsname#1{\mathinner
+        {\lbrace\,{\mathcode`\|32768\let|\midvert #1}\,\rbrace}}
+  \xdef\Set{\protect\expandafter\noexpand\csname Set \endcsname}
+  \expandafter\gdef\csname Set \endcsname#1{\left\{%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     \:{\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\:\right\}}
+}
+\def\midvert{\egroup\mid\bgroup}
+\def\SetVert{\@ifnextchar|{\|\@gobble}% turn || into \|
+    {\egroup\;\mid@vertical\;\bgroup}}
+\def\SetDoubleVert{\egroup\;\mid@dblvertical\;\bgroup}
+
+% define \ideal and \Ideal
+{\catcode`\|=\active
+  \xdef\ideal{\protect\expandafter\noexpand\csname ideal \endcsname}
+  \expandafter\gdef\csname ideal \endcsname#1{\mathinner
+        {(\,{\mathcode`\|32768\let|\midvert #1}\,)}}
+  \xdef\Ideal{\protect\expandafter\noexpand\csname Ideal \endcsname}
+  \expandafter\gdef\csname Ideal \endcsname#1{\left(%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     \:{\let\|\IdealDoubleVert
+     \mathcode`\|32768\let|\IdealVert
+     #1}\:\right)}
+}
+\def\midvert{\egroup\mid\bgroup}
+\def\IdealVert{\@ifnextchar|{\|\@gobble}% turn || into \|
+    {\egroup\;\mid@vertical\;\bgroup}}
+\def\IdealDoubleVert{\egroup\;\mid@dblvertical\;\bgroup}
+
+
+\begingroup
+ \edef\@tempa{\meaning\middle}
+ \edef\@tempb{\string\middle}
+\expandafter \endgroup \ifx\@tempa\@tempb
+ \def\mid@vertical{\middle|}
+ \def\mid@dblvertical{\middle\SavedDoubleVert}
+\else
+ \def\mid@vertical{\mskip1mu\vrule\mskip1mu}
+ \def\mid@dblvertical{\mskip1mu\vrule\mskip2.5mu\vrule\mskip1mu}
+\fi
