@@ -1,5 +1,3 @@
-# latex
-
 ```
 latex-setup
 ```
