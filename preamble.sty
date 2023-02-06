@@ -11,12 +11,16 @@
 
 % nomenclature
 \usepackage{nomencl}
+\makenomenclature
+\renewcommand\nomname{}
 
 % chapters and sections
 \usepackage{titlesec}
 \usepackage[rightlabels]{titletoc}
 \renewcommand\thesection{\S\arabic{section}}
-\titleformat{\section}{\centering\scshape}{\thesection.}{1ex}{}
+\titleformat{\section}{\Huge \centering\scshape}{\thesection.}{1ex}{}
+\titleformat{\subsection}{\Large \centering\scshape}{\thesubsection}{1ex}{}
+\titleformat{\subsubsection}{\small \centering\scshape}{\thesubsubsection}{1ex}{}
 
 % keywords
 \providecommand{\keywords}[1] {
@@ -39,8 +43,8 @@
 % contents 
 \renewcommand\contentsname{\Huge \textbf{\scshape{Contents}} \bigskip}
 
-% bibliography
-\renewcommand\refname{\textbf{\scshape{References}}}
+% references
+\renewcommand\refname{\normalsize \textbf{\scshape{References}}}
 
 % figures
 \usepackage[labelfont={sc}]{caption}
@@ -50,3 +54,7 @@
 
 % draw stuff
 \usepackage{graphicx}
+
+% argmin function
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
