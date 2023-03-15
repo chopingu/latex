@@ -1,3 +1,3 @@
 ```
-latex template
+A generic latex template
 ```
