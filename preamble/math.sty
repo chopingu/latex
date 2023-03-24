@@ -1,10 +1,9 @@
-\ProvidesPackage{math}
+\ProvidesPackage{preamble/math}
 
 % NOTE: When importing the braket part below into a tex-file, the commands MUST be enclosed within \makeatletter ... \makeatother
 
 % Packages
 \usepackage{nicefrac, amsmath, amsthm, amssymb}
-\usepackage{mathabx} % braket package needed in order for \gen below to work
 \usepackage[c]{esvect} % vector notation
 
 % Fix spacing around \left and \right
@@ -144,65 +143,3 @@
 
 % Brakets 
 \let\protect\relax
-
-% Define \gen och \Gen.
-{\catcode`\|=\active
-  \xdef\gen{\protect\expandafter\noexpand\csname gen \endcsname}
-  \expandafter\gdef\csname gen \endcsname#1{\mathinner
-        {\langle\,{\mathcode`\|32768\let|\midvert #1}\,\rangle}}
-  \xdef\Gen{\protect\expandafter\noexpand\csname Gen \endcsname}
-  \expandafter\gdef\csname Gen \endcsname#1{\left\langle%
-     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
-     \:{\let\|\GenDoubleVert
-     \mathcode`\|32768\let|\GenVert
-     #1}\:\right\rangle}
-}
-\def\midvert{\egroup\mid\bgroup}
-\def\GenVert{\@ifnextchar|{\|\@gobble} % turn || into \|
-    {\egroup\;\mid@vertical\;\bgroup}}
-\def\GenDoubleVert{\egroup\;\mid@dblvertical\;\bgroup}
-
-% Define \set och \Set.
-{\catcode`\|=\active
-  \xdef\set{\protect\expandafter\noexpand\csname set \endcsname}
-  \expandafter\gdef\csname set \endcsname#1{\mathinner
-        {\lbrace\,{\mathcode`\|32768\let|\midvert #1}\,\rbrace}}
-  \xdef\Set{\protect\expandafter\noexpand\csname Set \endcsname}
-  \expandafter\gdef\csname Set \endcsname#1{\left\{%
-     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
-     \:{\let\|\SetDoubleVert
-     \mathcode`\|32768\let|\SetVert
-     #1}\:\right\}}
-}
-\def\midvert{\egroup\mid\bgroup}
-\def\SetVert{\@ifnextchar|{\|\@gobble} % turn || into \|
-    {\egroup\;\mid@vertical\;\bgroup}}
-\def\SetDoubleVert{\egroup\;\mid@dblvertical\;\bgroup}
-
-% Define \ideal och \Ideal.
-{\catcode`\|=\active
-  \xdef\ideal{\protect\expandafter\noexpand\csname ideal \endcsname}
-  \expandafter\gdef\csname ideal \endcsname#1{\mathinner
-        {(\,{\mathcode`\|32768\let|\midvert #1}\,)}}
-  \xdef\Ideal{\protect\expandafter\noexpand\csname Ideal \endcsname}
-  \expandafter\gdef\csname Ideal \endcsname#1{\left(%
-     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
-     \:{\let\|\IdealDoubleVert
-     \mathcode`\|32768\let|\IdealVert
-     #1}\:\right)}
-}
-\def\midvert{\egroup\mid\bgroup}
-\def\IdealVert{\@ifnextchar|{\|\@gobble} % turn || into \|
-    {\egroup\;\mid@vertical\;\bgroup}}
-\def\IdealDoubleVert{\egroup\;\mid@dblvertical\;\bgroup}
-
-\begingroup
- \edef\@tempa{\meaning\middle}
- \edef\@tempb{\string\middle}
-\expandafter \endgroup \ifx\@tempa\@tempb
- \def\mid@vertical{\middle|}
- \def\mid@dblvertical{\middle\SavedDoubleVert}
-\else
- \def\mid@vertical{\mskip1mu\vrule\mskip1mu}
- \def\mid@dblvertical{\mskip1mu\vrule\mskip2.5mu\vrule\mskip1mu}
-\fi

@@ -1,4 +1,4 @@
-\ProvidesPackage{style}
+\ProvidesPackage{preamble/style}
 
 % Title
 \newenvironment{argument}{\begin{abstract} \footnotesize}{\end{abstract}}
@@ -37,12 +37,6 @@
 \newcommand{\attrx}[1]{ \begin{flushright} \scriptsize #1 \end{flushright}} 
 
 \newcommand{\epigraph}[1]{\begin{quote}\footnotesize #1 \end{quote} }
-
-\usepackage{verse}
-\newenvironment{vverse}[1][\pagewidth]{\settowidth{\versewidth}{#1} \begin{verse}[\versewidth]}{\end{verse}}
-
-\newcommand{\vattr}[1]{\makebox[\versewidth][r]{\scriptsize \streck\hspace{1ex}#1}}
-\newcommand{\vattrx}[1]{\makebox[\versewidth][r]{\scriptsize #1}}
 
 % Cross-references
 \usepackage{hyperref}
