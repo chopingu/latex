@@ -1,0 +1,23 @@
+\section{Data Collection of DL Energy Consumption}
+\label{sec:data-collection}
+There are three main steps to the data-collection process. \textbf{(1)} A module type is selected from the assortment of modules available in the implementation (see Tab.~\ref{tab:layer-params}). \textbf{(2)} All required parameters for this type (e.g. kernel-size) are sampled randomly from configurable ranges. \textbf{(3)} We use codecarbon to measure the CPU energy consumption by performing several forward-passes through the randomly configured module. For an overview of all modules, parameters, and their ranges, refer to Tab.~\ref{tab:layer-params}.
+
+\looseness=-1
+We differentiate between two categories of modules and corresponding data sets. The ``layer-wise'' data contains energy measurements for modules, which represent the layer types (e.g. Conv2d\footnote{\url{https://pytorch.org/docs/stable/nn.html}}), and will be used to train the predictors described in the next section. The ``model-wise'' data set contains the same measurements but for complete architectures (e.g. VGG16), and is used as a ground truth to evaluate the final model energy estimates. Additionally, this data contains measurements of all individual layers of the architecture to help evaluate the prediction results in Sec.~\ref{sec:results} at a higher level of detail. Furthermore, we also calculate the MAC (multiply-accumulate-operations) count, a measure of computational cost, for each module. To summarize, both data sets contain the corresponding module parameters and the MAC count as feature inputs, and the measured CPU energy of the module as the output label. See Tab.~\ref{tab:data-sets} for the sizes of the data sets. Further technical details regarding this process can be found in Sec.~\ref{sec:appendix-data-collection} and the data files can be located in the repository. Lastly, as the MAC count is a crucial feature, but outside the scope of this discussion, refer to Sec.~\ref{sec:appendix-performance-measures} for more information. 
+\begin{table}[t]
+    \caption{All possible parameter configurations for the data-collection process for each layer-type; the Activations encompass: ReLU, Sigmoid, Tanh, and Softmax; the Architectures encompass AlexNet \citep{alexnet_krizhevsky2017imagenet}, and VGG11/13/16.}
+    \label{tab:layer-params}
+    \begin{center}
+        \begin{tabular}{l|lllll}
+        \multicolumn{1}{c}{\bf Parameter}  & \multicolumn{1}{c}{\bf Conv2d} & \multicolumn{1}{c}{\bf MaxPool2d} & \multicolumn{1}{c}{\bf Linear} & \multicolumn{1}{c}{\bf Activations} & \multicolumn{1}{c}{\bf Architectures} \\
+        \\ \hline \\
+batch-size        & [1, 256] & [1, 256]  & [1, 512]  & [1, 512]    & [1, 256]      \\
+image-size        & [4, 224] & [4, 224]  & /         & /           & 224           \\
+kernel-size       & [1, 11]  & [1, 11]   & /         & /           & /             \\
+in-channels/size  & [1, 512] & /          & [1, 5000] & [$5*10^4$, $5*10^6$]    & 3             \\
+out-channels/size & [1, 512] & [1, 512]  & [1, 5000] & /           & /             \\
+stride            & [1, 5]   & [1, 5]    & /         & /           & /             \\
+padding           & [0, 3]   & [0, 3]    & /         & /           & / 
+        \end{tabular}
+    \end{center}
+\end{table}
