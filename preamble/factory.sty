@@ -13,44 +13,6 @@
 \newcommand{\chaptern}[1]{\chapter*{#1} \addcontentsline{toc}{chapter}{#1}}
 \newcommand{\partn}[1]{\part*{#1} \addcontentsline{toc}{part}{#1}}
 
-% Tabular
-\newcommand{\btab}[1]{\begin{table} \centering \begin{tabular}{#1}}
-\newcommand{\etab}{\end{tabular} \end{table}}
-\newcommand{\etabc}[1]{\end{tabular} \caption{#1} \end{table}}
-
-% Figures
-\newcommand{\bfig}{\begin{figure} \centering}
-\newcommand{\efig}{\end{figure}}
-\newcommand{\efigc}[2][]{\caption[#1]{#2} \end{figure}}
-\renewcommand{\topfraction}{0.85} % Maximal fraction of top floats on a page (default 0.7)
-\renewcommand{\textfraction}{0.1} % Minimal fraction of text on a page (default 0.1)
-\renewcommand{\floatpagefraction}{0.75} % Minimal fraction of floats on a float page (default 0.5)
-\renewcommand{\bottomfraction}{0.45}
-
-% Lists
-\usepackage{enumitem}
-\usepackage{outlines}
-\newcommand{\bnum}{\begin{enumerate}}
-\newcommand{\enum}{\end{enumerate}}
-\newcommand{\brom}{\begin{enumerate}[label={\scshape{\roman*.}}]}
-\newcommand{\erom}{\end{enumerate}}
-\newcommand{\balph}{\begin{enumerate}[label={\upshape{\Alph*.}}]} 
-\newcommand{\ealph}{\end{enumerate}}
-\newcommand{\balp}{\begin{enumerate}[label={\upshape{\alph*.}}]}
-\newcommand{\ealp}{\end{enumerate}}
-\newcommand{\bpnum}{\begin{enumerate}[label={\upshape{(\arabic*)}}]}
-\newcommand{\epnum}{\end{enumerate}}
-\newcommand{\bpalp}{\begin{enumerate}[label={\upshape{(\alph*)}}]}
-\newcommand{\epalp}{\end{enumerate}}
-
-% Hyphens
-\usepackage{hyphenat} 
-
-% Title
-\newcommand{\titul}[1]{\title{\Large\bfseries #1 \\[2.2ex] \rule{10em}{.7pt} \\[1ex] }}
-\newcommand{\auctor}[1]{\author{\normalsize\scshape #1}}
-\newcommand{\datum}[1]{\date{\normalsize\itshape #1}}
-
 % pdf
 \usepackage{pdfpages}
 

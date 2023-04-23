@@ -1,7 +1,5 @@
 \ProvidesPackage{preamble/math}
 
-% NOTE: When importing the braket part below into a tex-file, the commands MUST be enclosed within \makeatletter ... \makeatother
-
 % Packages
 \usepackage{nicefrac, amsmath, amsthm, amssymb}
 \usepackage[c]{esvect} % vector notation
@@ -12,14 +10,6 @@
 \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
 \renewcommand{\right}{\aftergroup\egroup\originalright}
 \allowdisplaybreaks 
-
-% Equations
-\newcommand{\beq}{\begin{equation}}
-\newcommand{\eeq}{\end{equation}}
-
-% Cases
-\newcommand{\bca}{\begin{cases}}
-\newcommand{\eca}{\end{cases}}
 
 % References
 \newcommand{\eref}[1]{(\ref{#1})}
@@ -74,10 +64,6 @@
 \renewcommand{\mod}{\mathop\mathrm{mod}\nolimits}
 \renewcommand{\pmod}[1]{\ (\mathop\mathrm{mod}\nolimits #1)}
 \renewcommand{\deg}{\mathop\mathrm{deg}\nolimits}
-\DeclareMathOperator{\tr}{\mathrm{tr}} 			
-\DeclareMathOperator{\ad}{\mathrm{ad}}
-\renewcommand{\dim}{\mathop\mathrm{dim}\nolimits}
-\renewcommand{\det}{\mathop\mathrm{det}\nolimits}
 
 % Number theory
 \DeclareMathOperator{\GCD}{\textsc{gcd}}
@@ -140,6 +126,3 @@
 \renewcommand{\Phi}{\Upphi}
 \renewcommand{\Psi}{\Uppsi}
 \renewcommand{\Omega}{\Upomega}
-
-% Brakets 
-\let\protect\relax

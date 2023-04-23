@@ -1,14 +1,5 @@
 \ProvidesPackage{preamble/style}
 
-% Title
-\newenvironment{argument}{\begin{abstract} \footnotesize}{\end{abstract}}
-\addto\captionsUKenglish{\renewcommand\abstractname{\mdseries\scshape Argument}}
-
-\newcommand{\MSC}[1]{
-\begin{description}
-\item[\mdseries\textsc{MSC2010.}]  #1
-\end{description}}
-
 % Headers
 \usepackage{titlesec}	
 \usepackage[dotinlabels, rightlabels]{titletoc}		
@@ -35,7 +26,6 @@
 % Quotes
 \newcommand{\attr}[1]{ \begin{flushright} \scriptsize \streck\hspace{1ex}#1 \end{flushright}}
 \newcommand{\attrx}[1]{ \begin{flushright} \scriptsize #1 \end{flushright}} 
-
 \newcommand{\epigraph}[1]{\begin{quote}\footnotesize #1 \end{quote} }
 
 % Cross-references
