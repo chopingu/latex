@@ -1,3 +1,0 @@
-\section{Limitations}
-\label{sec:limitations}
-While we introduced a first approach to estimate the energy consumption of a full model without running it, our pipeline still has some limitations. First, codecarbon provides no real process isolation, meaning that other processes on the system could introduce noise to the measurements. Secondly, not all layer types (e.g. AdaptiveAvgPooling) are modeled in our solution but additional ones can easily be added due to the modular design of the framework. Finally, the focus of this work was on estimating CPU energy consumption, even though measuring the energy consumption of GPUs, which are widely used in deep learning applications, would also be relevant.
